@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrenador Personal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .tab-button, .mode-button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+        .tab-button:hover, .mode-button:hover {
+            background-color: #0056b3;
+        }
+        .tab-button.active {
+            background-color: #28a745;
+        }
+        .mode-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+        }
+        .mode-button.dark {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .tab-content {
+            display: none;
+            margin-top: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .video-container {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .dark-mode .video-container {
+            background: #333;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+        }
+        iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+        .video-container:hover .fullscreen-btn {
+            display: block;
+        }
+        .theater-mode iframe {
+            width: 90vw;
+            height: 70vh;
+            max-width: none;
+            max-height: none;
+        }
+    </style>
+</head>
+<body>
+    <button class="mode-button" onclick="toggleMode()">Modo Oscuro 🌙</button>
+    <div class="container">
+        <h1>Entrenador Personal</h1>
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab(event, 'brazo')">Brazo</button>
+            <button class="tab-button" onclick="showTab(event, 'core')">Core</button>
+        </div>
+        
+        <div id="brazo" class="tab-content active">
+            <div class="video-container">
+                <h2>Bíceps Banco Inclinado</h2>
+                <iframe src="https://drive.google.com/file/d/1Rrc8RdBiR2_cO-2A_8w53ApzCsgEDOUP/preview" allow="autoplay" onclick="toggleTheater(this)"></iframe>
+                <button class="fullscreen-btn" onclick="goFullScreen(this)">⛶ Pantalla Completa</button>
+            </div>
+            <div class="video-container">
+                <h2>Curl Bíceps Martillo</h2>
+                <iframe src="https://drive.google.com/file/d/1Tfs3JXCp_y9l0W0CaEOGs349ivxxIKz5/preview" allow="autoplay" onclick="toggleTheater(this)"></iframe>
+                <button class="fullscreen-btn" onclick="goFullScreen(this)">⛶ Pantalla Completa</button>
+            </div>
+            <div class="video-container">
+                <h2>Curl Bíceps Polea Baja</h2>
+                <iframe src="https://drive.google.com/file/d/1TiLaHd2iVSTDbKdVeeK4TTec0tCGV2Ux/preview" allow="autoplay" onclick="toggleTheater(this)"></iframe>
+                <button class="fullscreen-btn" onclick="goFullScreen(this)">⛶ Pantalla Completa</button>
+            </div>
+            <div class="video-container">
+                <h2>Tríceps Polea Alta</h2>
+                <iframe src="https://drive.google.com/file/d/1RlO5q1rgxi-D5Jkylb81CBG8Gk8Yk4sD/preview" allow="autoplay" onclick="toggleTheater(this)"></iframe>
+                <button class="fullscreen-btn" onclick="goFullScreen(this)">⛶ Pantalla Completa</button>
+            </div>
+            <div class="video-container">
+                <h2>Tríceps Press Francés</h2>
+                <iframe src="https://drive.google.com/file/d/1Rq-IFsopI7SVsgS2yRkxLUSWkNS0rpK2/preview" allow="autoplay" onclick="toggleTheater(this)"></iframe>
+                <button class="fullscreen-btn" onclick="goFullScreen(this)">⛶ Pantalla Completa</button>
+            </div>
+            <div class="video-container">
+                <h2>Tríceps Trasnuca</h2>
+                <iframe src="https://drive.google.com/file/d/1ThySf3fKgXcmybq6JerixTzTWBcK8DMx/preview" allow="autoplay" onclick="toggleTheater(this)"></iframe>
+                <button class="fullscreen-btn" onclick="goFullScreen(this)">⛶ Pantalla Completa</button>
+            </div>
+        </div>
+
+        <div id="core" class="tab-content">
+            <div class="video-container">
+                <h2>Bird Dog</h2>
+                <iframe src="https://drive.google.com/file/d/1TIIP1nJQQCwqOZsufPW1kOqUDS9mdkVW/preview" allow="autoplay" onclick="toggleTheater(this)"></iframe>
+                <button class="fullscreen-btn" onclick="goFullScreen(this)">⛶ Pantalla Completa</button>
+            </div>
+            <div class="video-container">
+                <h2>Crunch Abdominal</h2>
+                <iframe src="https://drive.google.com/file/d/1TSVF-K7geSRrD_XoFAVAnAEnHDg83433/preview" allow="autoplay" onclick="toggleTheater(this)"></iframe>
+                <button class="fullscreen-btn" onclick="goFullScreen(this)">⛶ Pantalla Completa</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(event, tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function toggleMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function toggleTheater(iframe) {
+            if (iframe.classList.contains("theater-mode")) {
+                iframe.classList.remove("theater-mode");
+            } else {
+                document.querySelectorAll("iframe").forEach(video => video.classList.remove("theater-mode"));
+                iframe.classList.add("theater-mode");
+            }
+        }
+
+        function goFullScreen(button) {
+            let iframe = button.previousElementSibling;
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { 
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { 
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { 
+                iframe.msRequestFullscreen();
+            }
+        }
+    </script>
+</body>
+</html>
